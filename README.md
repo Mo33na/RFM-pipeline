@@ -19,25 +19,29 @@ This project computes daily RFM (Recency, Frequency, Monetary) metrics for custo
 
 1. A separate .env file is created to store the database credentials in the project root directory
 
-  DB_HOST=localhost
-  DB_NAME=postgres
-  DB_USER=your_username
-  DB_PASSWORD=your_password
-  DB_PORT=5432
-
+ ```env
+DB_HOST=localhost
+DB_NAME=postgres
+DB_USER=your_username
+DB_PASSWORD=your_password
+DB_PORT=5432
+```
 2. Import packages to load the env variables:
 
      from dotenv import load_dotenv
      load_dotenv()
-     import os
 
 4. The python script reads the credentials using:
 
-  DB_HOST = os.getenv("DB_HOST")
-  DB_NAME = os.getenv("DB_NAME")
-  DB_USER = os.getenv("DB_USER")
-  DB_PASSWORD = os.getenv("DB_PASSWORD")
-  DB_PORT = os.getenv("DB_PORT", "5432")
+ ```python
+import os
+
+DB_HOST = os.getenv("DB_HOST")
+DB_NAME = os.getenv("DB_NAME")
+DB_USER = os.getenv("DB_USER")
+DB_PASSWORD = os.getenv("DB_PASSWORD")
+DB_PORT = os.getenv("DB_PORT", "5432")
+```
 
 **How to run the script** :
 
