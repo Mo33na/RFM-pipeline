@@ -46,9 +46,9 @@ DB_PORT = os.getenv("DB_PORT", "5432")
 **How to run the script** :
 
 1. Install the required packages
-   
-    pip install -r requirements.txt
-
+```bash
+pip install -r requirements.txt
+```
 3. Run the pipeline using "jupyter notebook rfm_pipeline.ipynb" and run all the cells.
 
 **To schedule the task using cron:**
@@ -58,6 +58,7 @@ DB_PORT = os.getenv("DB_PORT", "5432")
 3. To run the script daily at 11am suppose:
    
    0 11 * * * /usr/bin/python3 /path/to/rfm_pipeline.py
+
 
    
 
