@@ -11,11 +11,11 @@ Daily RFM pipeline
 - [Scheduling the task](#scheduling-automation)
 - [Testing](#testing)
 
-**Overview**
+## Overview
 
 This project computes daily RFM (Recency, Frequency, Monetary) metrics for customers based on orders data and stores the results in the table ecom.customer_rfm_daily. It processes transactional data, computes RFM scores, and segments customers to enable targeted marketing startegies, personalization, and business insights.
 
-**What this pipeline does:**
+## What this pipeline does:
 
 1. Extracts data from ecom.orders table (excluding cancelled orders)
 2. Calculates RFM metric for each customer:
@@ -26,7 +26,7 @@ This project computes daily RFM (Recency, Frequency, Monetary) metrics for custo
 4. Segments customers based on RFM scores.
 5. Runs incrementally (daily) using upsert logic (no duplicates)
 
-**Data Access**:
+## Data Access:
 
 1. A separate .env file is created to store the database credentials in the project root directory
 
@@ -54,13 +54,13 @@ DB_PASSWORD = os.getenv("DB_PASSWORD")
 DB_PORT = os.getenv("DB_PORT", "5432")
 ```
 
-**Prerequisites**
+## Prerequisites:
 
 Python 3.x
 PostgreSQL
 Jupyter Notebook
 
-**How to run the script** :
+## How to run the script :
 
 Install dependencies
 ```bash
@@ -82,7 +82,7 @@ pip install -r requirements.txt
  python rfm_pipeline.py 
  ```
 
-**Scheduling the task:**
+## Scheduling the task:
 
 Use cron jobs to run daily.
 
@@ -97,7 +97,7 @@ Use cron jobs to run daily.
  0 11 * * * /usr/bin/python3 /path/to/rfm_pipeline.py
   ```
 
-**Testing**:
+## Testing:
 
 1. Validate RFM calculations with sample data.
 2. Check edge cases:
