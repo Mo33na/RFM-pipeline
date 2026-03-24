@@ -1,5 +1,4 @@
 # Customer RFM Segmentation Pipeline
-Daily RFM pipeline
 
 **Table of Contents**
 
