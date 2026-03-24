@@ -5,7 +5,7 @@
 This project computes daily RFM (Recency, Frequency, Monetary) metrics for customers based on orders data and stores the results in the table ecom.customer_rfm_daily. It processes transactional data, computes RFM scores, and segments customers to enable targeted marketing startegies, personalization, and business insights.
 
 
-**Table of Contents**
+## Table of Contents
 
 - [What This Pipeline Does](#what-this-pipeline-does)
 - [Data Access](#data-access)
