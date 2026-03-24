@@ -1,6 +1,16 @@
 # Customer RFM Segmentation Pipeline
 Daily RFM pipeline
 
+**Table of Contents**
+
+- [Overview](#Overview)
+- [What This Pipeline Does](#what-this-pipeline-does)
+- [Data Access](#data-access)
+- [Prerequisites](#prerequisites)
+- [How to run the script](#running-the-project)
+- [Scheduling the task](#scheduling-automation)
+- [Testing](#testing)
+
 **Overview**
 
 This project computes daily RFM (Recency, Frequency, Monetary) metrics for customers based on orders data and stores the results in the table ecom.customer_rfm_daily. It processes transactional data, computes RFM scores, and segments customers to enable targeted marketing startegies, personalization, and business insights.
@@ -72,7 +82,7 @@ pip install -r requirements.txt
  python rfm_pipeline.py 
  ```
 
-**To schedule the task:**
+**Scheduling the task:**
 
 Use cron jobs to run daily.
 
@@ -82,9 +92,11 @@ Use cron jobs to run daily.
  crontab -e
  ```
 2. Run daily at 11 am
-
+   
+```bash
  0 11 * * * /usr/bin/python3 /path/to/rfm_pipeline.py
- 
+  ```
+
 **Testing**:
 
 1. Validate RFM calculations with sample data.
