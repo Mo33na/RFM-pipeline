@@ -1,21 +1,22 @@
-# RFM-pipeline
+# Customer RFM Segmentation Pipeline
 Daily RFM pipeline
 
 **Overview**
 
-This project computes daily RFM (Recency, Frequency, Monetary) metrics for customers based on orders data and stores the results in the table ecom.customer_rfm_daily.
+This project computes daily RFM (Recency, Frequency, Monetary) metrics for customers based on orders data and stores the results in the table ecom.customer_rfm_daily. It processes transactional data, computes RFM scores, and segments customers to enable targeted marketing startegies, personalization, and business insights.
 
-**Description of the pipeline:**
+**What this pipeline does:**
 
 1. Extracts data from ecom.orders table (excluding cancelled orders)
-2. Calculate RFM metric:
+2. Calculates RFM metric for each customer:
    Recency: days since last completed order (latest order date)
    Frequency: number of orders in the last 90 days
-   Monetary: total spend in the last 90 days (sum of order total) - all three ranging form 1-5
-3. RFM scores are created and then segmented accordingly to identify the different set of customers and design targeted marketing strategies, personalized offers etc.
-4. Upserts results into the destination table so the job can run daily without duplicates.
+   Monetary: total spend in the last 90 days (sum of order total)
+3. Assigns scores (1-5) for RFM.
+4. Segments customers based on RFM scores.
+5. Runs incrementally (daily) using upsert logic (no duplicates)
 
-**Creation of environment variables**:
+**Data Access**:
 
 1. A separate .env file is created to store the database credentials in the project root directory
 
@@ -26,7 +27,7 @@ DB_USER=your_username
 DB_PASSWORD=your_password
 DB_PORT=5432
 ```
-2. Import packages to load the env variables:
+2. Import packages to load the environment variables:
 
      from dotenv import load_dotenv
      load_dotenv()
@@ -43,21 +44,55 @@ DB_PASSWORD = os.getenv("DB_PASSWORD")
 DB_PORT = os.getenv("DB_PORT", "5432")
 ```
 
+**Prerequisites**
+
+Python 3.x
+PostgreSQL
+Jupyter Notebook
+
 **How to run the script** :
 
-1. Install the required packages
+Install dependencies
 ```bash
 pip install -r requirements.txt
 ```
-3. Run the pipeline using "jupyter notebook rfm_pipeline.ipynb" and run all the cells.
+**Option 1: Using Jupyter Notebook:**
 
-**To schedule the task using cron:**
+```bash
+ jupyter notebook rfm_pipeline.ipynb 
+ ```
+ Run all the cells.
 
-1. Need to create a python script for this, let's say: rfm_pipeline.py
-2. Open crontab using: crontab -e
-3. To run the script daily at 11am suppose:
-   
-   0 11 * * * /usr/bin/python3 /path/to/rfm_pipeline.py
+ **Option 2: Using Python Script (Recommended for production)**:
+
+ 1. Convert notebook to sript: rfm_pipeline.py
+ 2. Run:
+
+```bash
+ python rfm_pipeline.py 
+ ```
+
+**To schedule the task:**
+
+Use cron jobs to run daily.
+
+1. Open crontab:
+
+```bash
+ crontab -e
+ ```
+2. Run daily at 11 am
+
+ 0 11 * * * /usr/bin/python3 /path/to/rfm_pipeline.py
+ 
+**Testing**:
+
+1. Validate RFM calculations with sample data.
+2. Check edge cases:
+- Customers with no recent orders
+3. Ensure:
+- No duplicate rows
+- Correct upsert behavior
 
 
    
